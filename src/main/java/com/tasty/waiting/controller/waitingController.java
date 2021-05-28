@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tasty.bookmark.service.BookmarkService;
-import com.tasty.list.service.ListService;
 import com.tasty.member.vo.shopMemberVO;
 import com.tasty.waiting.service.WaitService;
-import com.tasty.waiting.vo.waitVO;
 
 import lombok.extern.log4j.Log4j;
 

@@ -49,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
 			out.close();
 		}else {
 			out.println("<script>");
-			out.println("location.href='/member/loginForm.do'");
+			out.println("location.href='/list/map.do'");
 			out.println("</script>");
 			out.close();
 		}
@@ -295,22 +295,29 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mapper.view(id);
 	}
+
+	@Override
+	public shopMemberVO shopView(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.shopView(id);
+	}
 	
 	@Override
 	public int shopReg(shopMemberVO vo) throws Exception {
 		return mapper.shopReg(vo);
 	}
 
+
 	@Override
-	public List<shopMemberVO> getMap(shopMemberVO vo) throws Exception {
-		
-		log.info("찍어보좌 impl : " + vo);
+	public int masterShopUpdate(shopMemberVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.getMap(vo);
+		return mapper.masterShopUpdate(vo);
 	}
-
-
-
+	@Override
+	public int shopDelete(shopMemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.shopDelete(vo);
+	}
 
 
 

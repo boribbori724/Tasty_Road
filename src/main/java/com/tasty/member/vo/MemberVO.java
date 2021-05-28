@@ -10,7 +10,7 @@ import lombok.Data;
 public class MemberVO {
 	
 	private String id;
-	private Number memberNo;
+	private int memberNo;
 	private String pw;
 	private String name;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -23,5 +23,5 @@ public class MemberVO {
 	private String status;
 	private String address;
 	private int gradeNo;
-	
+	private String gradeName;
 }

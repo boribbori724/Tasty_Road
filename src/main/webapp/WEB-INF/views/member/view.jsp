@@ -43,12 +43,12 @@
 			<td class="id">${vo.email }</td>
 		</tr>
 		<tr>
-			<th>가입일</th>
-			<td class="id"><fmt:formatDate value="${vo.regDate }"/></td>
+			<th>주소</th>
+			<td class="id">${vo.address }</td>
 		</tr>
 		<tr>
-			<th>상태</th>
-			<td class="id">${vo.status }</td>
+			<th>가입일</th>
+			<td class="id"><fmt:formatDate value="${vo.regDate }"/></td>
 		</tr>
 		<tr>
 			<th>등급명</th>
@@ -60,7 +60,12 @@
 			<td colspan="2">
 <!-- 				<a href="../member/memberUpdateForm.do" class="btn btn-default">내 정보 수정</a> -->
 <!-- 				<a href="../member/logout.do" class="btn btn-default">로그아웃</a> -->
-				<a href="../member/shopReg.do?id=${vo.id }" class="btn btn-default">사업자 등록</a>
+				<c:if test="${vo.gradeNo == 4 }">
+					<a href="../member/shopReg.do?id=${vo.id }" class="btn btn-default">사업자 등록</a>
+				</c:if>
+				<c:if test="${vo.gradeNo >= 5 }">
+					<a href="../member/shopView.do?id=${vo.id }" class="btn btn-default">가게 정보 보기</a>
+				</c:if>
 				<c:if test="${login.gradeNo == 9 }">
 		<!-- 관리자 메뉴 -->
 		<a href="../member/memberList.do" class="btn btn-default">회원리스트</a>

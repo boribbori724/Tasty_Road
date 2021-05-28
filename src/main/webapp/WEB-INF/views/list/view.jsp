@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,22 +45,8 @@ margin-top: -30px;
 // alert("aaa" + 10);
 
 $(function(){
-	// 처리 후 나타나는 메시지 : 글쓰기나 글삭제 처리된 후 리스트로 돌아 오면 보여준다.
-	// - sitemesh - default_decorator.jsp에서 해결
-	// F5, ctrl + F5, ctrl + r 새로고침 막기
-	/*
-	$(document).keydown(function (e) {
-	     
-	            if (e.which === 116) {
-	                if (typeof event == "object") {
-	                    event.keyCode = 0;
-	                }
-	                return false;
-	            } else if (e.which === 82 && e.ctrlKey) {
-	                return false;
-	            }
-	});
-	*/
+
+	
 
 	// 모달 안에 삭제 버튼 이벤트
 	$("#modal_deleteBtn").click(function(){
@@ -66,7 +54,7 @@ $(function(){
 		$("#modal_form").submit();
 	});
 	
-	
+	var login = $(".login").text();
 	// 댓글 처리 JS 부분
 	console.log("==================================");
 	console.log("JS Reply List Test!!!");
@@ -98,7 +86,7 @@ $(function(){
 // 					alert(JSON.stringify(data));
 					var list = data.rList;
 // 					return; // 데이터만 확인하고 처리는 하지 않도록 하기 위해서
-
+   
 // 					alert(list);
 					var str = "";
 					// li 태그 만들기-----------------
@@ -176,6 +164,7 @@ $(function(){
 		reply.shopNo = $("#replyshopNo").val();
 		reply.content = $("#replyContent").val();
 		reply.id = $("#replyWriter").val();
+// 		reply.pw = $("#replyPw").val();
 // 		alert(reply);
 // 		alert(JSON.stringify(reply));
 
@@ -195,6 +184,27 @@ $(function(){
 	// 댓글번호, 내용, 작성자, 비밀번호
 	$(".chat").on("click",".replyUpdateBtn",function(){
 // 		alert("댓글 수정");
+
+	  // 데이터 수집
+	  // 전체 데이터를 포함하고 있는 태그 : li
+	  var li = $(this).closest("li");
+      
+      // html tag 안에 속성으로 data-replyNo="2" 값을 넣어 둔것은 obj.data("replyNo")로 찾아서 쓴다.
+      var replyNo = li.data("replyno");
+      var id = li.find(".replyWriterData").text();
+      var content = li.find(".replyContentData").text();	
+//       alert(login);
+//       alert(id);
+      
+      if(login != id) {
+         
+         alert("수정할 수 없습니다.");
+         
+         return false;
+                  
+      }
+	
+
 		// 모달창 제목 바꾸기
 		$("#replyModalTitle").text("댓글 수정하기");
 		
@@ -207,21 +217,14 @@ $(function(){
 		footer.find("button").show();
 		footer.find("#replyModalWriteBtn, #replyModalDeleteBtn").hide()
 		
-		
-		// 데이터 수집
-		// 전체 데이터를 포함하고 있는 태그 : li
-		var li = $(this).closest("li");
-		
 		// html tag 안에 속성으로 data-replyNo="2" 값을 넣어 둔것은 obj.data("replyNo")로 찾아서 쓴다.
-		var replyNo= li.data("replyno");
-		var content = li.find(".replyContentData").text();
-		var id = li.find(".replyWriterData").text();
+		
 		
 // 		alert("replyNo : " + replyNo); 
 		
 		// 데이터 셋팅
 		$("#replyNo").val(replyNo);
-		$("#replyshopNo").val(shopNo);
+// 		$("#replyshopNo").val(shopNo);
 		$("#replyContent").val(content);
 		$("#replyWriter").val(id);
 		// 비밀번호는 지운다.
@@ -273,25 +276,41 @@ $(function(){
 	// 댓글 삭제 폼 : 모달 (replyModal) ----------------------------------------------
 	$(".chat").on("click", ".replyDeleteBtn", function(){
 // 		alert("댓글 삭제");
+
+		// 댓글 번호 가져오기
+		var li = $(this).closest("li");
+		var replyNo = li.data("replyno");
+        var id = li.find(".replyWriterData").text();
+      
+      // html tag 안에 속성으로 data-replyNo="2" 값을 넣어 둔것은 obj.data("replyNo")로 찾아서 쓴다.
+
+      // alert(login);
+      // alert(id);
+      
+      if(login != id) {
+         
+         alert("삭제 할 수 없습니다.");
+         
+         return false;
+                  
+      }
 		// 모달창 제목 바꾸기
 		$("#replyModalTitle").text("댓글 삭제하기");
 
 		// 작업할 데이터의 입력란을 보이게 안보이게
 		$("#replyModal .form-group").show();
 // 		$("#replyNo, #replyshopNoDiv, #replyModal .form-group").show();
-		$("#replyContentDiv, #replyWriterDiv").hide();
+		$("#replyContentDiv, #replyWriterDiv, #shopNoDiv").hide();
 		
 		// 작업할 버튼을 보이게 안보이게
 		var footer = $("#replyModal .modal-footer");
 		footer.find("button").show();
 		footer.find("#replyModalWriteBtn, #replyModalUpdateBtn").hide()
 		
-		// 댓글 번호 가져오기
-		var li = $(this).closest("li");
-		var replyNo = li.data("replyno");
 		
 		// 댓글 번호 셋팅
 		$("#replyNo").val(replyNo);
+		$("#replyWriter").val(id);
 // 		alert(replyNo);
 		// 댓글 비밀번호 지우기
 // 		$("#replyPw").val("");
@@ -306,8 +325,10 @@ $(function(){
 		// 데이터 수집
 		var reply= {};
 		reply.replyNo = $("#replyNo").val();
-		reply.shopNo = $("#shopNo").val();
+// 		reply.shopNo = $("#shopNo").val();
 		reply.id = $("#replyWriter").val();
+// 		reply.pw = $("#replyPw").val();
+		
 		
 		// reply.js 안에 있는 replyService.delete(reply JSON, 성공함수, 오류함수)
 		replyService.delete(reply,
@@ -358,7 +379,12 @@ $(function(){
 		<ul class="list-group">
 			<li class="list-group-item row">
 				<div class="col-md-2 title_label">가게명</div>
+				<button type="button" id="likeBtn" class="like"><i class="fas fa-bookmark"  id="like"></i></button><br>
 				<div class="col-md-10">${vo.shopName }</div>
+			</li>
+			<li class="list-group-item row">
+				<div class="col-md-2 title_label">대표 이미지</div>
+				<div class="col-md-10"><img src = "${vo.image }"></div>
 			</li>
 			<li class="list-group-item row">
 				<div class="col-md-2 title_label">사업자번호</div>
@@ -404,9 +430,11 @@ $(function(){
 			<%--   	<div class="col-md-10">${vo.status }</div> --%>
 			<!--   </li> -->
 		</ul>
-		<a href="update.do?shopNo=${vo.shopNo }&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}&key=${pageObject.key}&word=${pageObject.word}"
+		<c:if test="${vo.id == login.id || login.gradeNo == 9 }">
+		<a href="/member/shopUpdate.do?id=${vo.id }"
 			class="btn btn-default">수정</a> 
 		<a class="btn btn-default" onclick="return false;" data-toggle="modal" data-target="#myModal">삭제</a>
+		</c:if>
 		<a href="map.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}&key=${pageObject.key}&word=${pageObject.word}"
 			class="btn btn-default">리스트</a>
 
@@ -416,27 +444,31 @@ $(function(){
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<i class="fa fa-comments fa-fw"></i> Reply <br/>
+						<c:if test="${login.gradeNo != null }">
 						<button class="btn btn-primary btn-xs pull-right"
 							id="writeReplyBtn">New Reply</button>
 							<br/>
+							</c:if>
 					</div>
 					<div class="panel-body">
 						<ul class="chat">
 <!-- 							데이터가 있는 만큼 반복 처리 li태그 만드어 내기 -->
 <!-- 							rno를 표시하지 않고 태그안에 속성으로 숨겨 놓음 data-rno="12" -->
 <!-- 							<li class="left clearfix"> -->
-							<li class="left clearfix" >	
-<!-- 							<li class="left clearfix" data-replyNo="12">	 -->
+<!-- 							<li class="left clearfix" >	 -->
+							<li class="left clearfix" data-replyNo="">	
 								<div>
 									<div class="header">
 										<strong class="primary-font">user00</strong> <br/>
 										<small class="pull-right text-muted">2021.04.21 14:12</small>
 									</div>
 									<p>Good job!</p>
+									<c:if test="${vo.id == login.id || session.id }">
 									<div class="text-right">
 										<button class="btn btn-default btn-xs replyUpdateBtn">수정</button>
 										<button class="btn btn-default btn-xs replyDeleteBtn">삭제</button>
 									</div>
+									</c:if>
 								</div>
 							</li>
 						</ul>
@@ -534,13 +566,13 @@ $(function(){
 						<div class="form-group" id="replyWriterDiv">
 							<label for="replyWriter">아이디:</label> 
 							<input name="writer" type="text" class="form-control" id="replyWriter"
-								required="required" value="${login.id }">
-						</div>
-						<!-- 			<div class="form-group" id="replyPwDiv"> -->
-						<!-- 			  <label for="replyPw">비밀번호:</label> -->
-						<!-- 			  <input name="pw" type="text" class="form-control" id="replyPw" -->
-						<!-- 			  required="required" pattern=".{4,20}"> -->
-						<!-- 			</div>		     -->
+								readonly="readonly" required="required" value="${login.id }">
+<!-- 						</div> -->
+<!-- 									<div class="form-group" id="replyPwDiv"> -->
+<!-- 									  <label for="replyPw">비밀번호:</label> -->
+<!-- 									  <input name="pw" type="password" class="form-control" id="replyPw" -->
+<!-- 									   required="required" pattern=".{4,20}"> -->
+<!-- 									</div>		     -->
 					</form>
 				</div>
 				<div class="modal-footer">

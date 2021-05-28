@@ -16,9 +16,9 @@
 			background-repeat: no-repeat;
 			background-size: 120%;
 			-ms-overflow-style: none; 
-			 
+			
 		}
-		::-webkit-scrollbar {  
+		::-webkit-scrollbar { 
 			display: none; 
 		}
 		.container{

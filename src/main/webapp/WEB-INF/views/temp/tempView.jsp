@@ -15,6 +15,32 @@
 <script type="text/javascript" src="/js/util.js"></script>
 <script type="text/javascript" src="/js/bookmark.js"></script>
 <link href="/resources/css/bookmark.css" rel="stylesheet"/>
+<script type="text/javascript">
+$(function () {
+	
+	var login = $(".login").text();
+	var id = $(".idtest").text();
+
+	$("#testBtn").click(function() {
+		
+		
+		
+		if(login != id) {
+
+			// alert("false");
+			
+			return false;
+			
+		}
+		
+		alert("click");
+		alert(login);
+		alert(id);
+		
+	});
+
+})
+</script>
 </head>
 <body>
  <div class="container">
@@ -47,10 +73,12 @@
     <div class="col-md-10">${vo.now }</div>
     <button type="button" class="pBtn">&#43;</button><br>
     <button type="button" class="mBtn">&#45;</button><br>
+    <button type="button" class="mBtn" id="testBtn">test</button><br>
    </li>
    <li class="list-group-item row">
     <div class="col-md-2 title_label">대기열</div>
     <div class="col-md-10">${vo.wait }</div>
+    <span class="idtest">test</span>
    </li>
   </ul>
  </div>

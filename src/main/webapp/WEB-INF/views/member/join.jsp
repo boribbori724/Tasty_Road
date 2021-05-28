@@ -163,7 +163,7 @@
 						name="id" class="int" maxlength="20" pattern = "[A-za-z0-9]{5,20}">
 					</span> 
 					<span id="id_check"></span>
-					<span class="error_next_box id_check"></span>
+					<span class="error_next_box"></span>
 				</div>
 
 				<div>

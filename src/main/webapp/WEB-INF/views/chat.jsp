@@ -574,7 +574,7 @@
 		<a href="/room" class="btnB blue">Room</a>
 		</div>
 		<input type="hidden" id="sessionId" value="">
-		<input type="hidden" id="openRoomNo" value="${openRoomNo }">
+		<input type="hidden" id="openRoomNo" value="${openRoomNo }"> 
 		
 		<div id="chating" class="chating">
 		</div>

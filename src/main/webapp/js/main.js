@@ -4,7 +4,6 @@
 
 
 var id = document.querySelector('#id');
-var idck = document.querySelector('#id_check');
 
 var pw1 = document.querySelector('#pw1');
 var pwMsg = document.querySelector('#alertTxt');
@@ -64,17 +63,15 @@ function checkId() {
     if(id.value === "") {
         error[0].innerHTML = "필수 정보입니다.";
         error[0].style.display = "block";
-    } else if (idck.value === "중복된 아이디가 있습니다."){
-        error[0].style.display = "none";
     } else if(!idPattern.test(id.value)) {
         error[0].innerHTML = "5~20자의 영문, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
         error[0].style.display = "block";
     } 
-//    else {
+    else {
 //        error[0].innerHTML = "멋진 아이디네요!";
 //        error[0].style.color = "#08A600";
-//        error[0].style.display = "block";
-//    }
+        error[0].style.display = "none";
+    }
 }
 
 function checkPw() {
@@ -310,4 +307,4 @@ function checkEmail() {
 function checkNumber() {
     
 }
-*/
+*/ 

@@ -22,11 +22,11 @@
 				<div>
 						<label>아이디</label>
 						<div class="form-group login-pw-wrap">
-							<input type="text" class="input-pw" name="id" value=${vo.id } id="pw"></input>
+							<input type="text" class="input-pw" name="id" value=${vo.id } id="pw" readonly></input>
 						</div>
 						<label>비밀번호</label>
 						<div class="form-group login-id-wrap">
-							<input type="text" class="input-id" name="pw" id="id" />
+							<input class="input-id" name="pw" id="id" type="password"/>
 						</div>
 					<div class="login-btn-wrap">
 						<button type="submit" class="find-btn">회원 탈퇴</button>

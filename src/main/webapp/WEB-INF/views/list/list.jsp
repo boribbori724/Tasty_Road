@@ -95,7 +95,7 @@ $(function(){
 		  </li>
 	  	</c:forEach>
 	</c:if>
-	</ul>
+	</ul>  
 	
 	<!-- a tag, js : location,  주소입력 : get방식으로 넘어 간다. post방식 꼭 지정을 해야한다. -->
 	<a href = "write.do?perPageNum=${pageObject.perPageNum }"></a>

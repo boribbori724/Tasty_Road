@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.tasty</groupId>
@@ -8,7 +7,6 @@
 	<name>Tasty_Road</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-	
 	<properties>
 		<junit-version>4.12</junit-version>
 		<java-version>1.8</java-version>
@@ -16,7 +14,7 @@
 		<org.aspectj-version>1.9.0</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 		<!-- project 절대 위치를 property로 설정 - 본인의 위치 -->
-		<project.basedir>D:/MS/workspace/Spring/tasty_Road</project.basedir>
+		<project.basedir>c:/project/spring/workspace/Tasty_Road</project.basedir>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -187,11 +185,11 @@
 		</dependency>
 
 <!-- 		XML 데이터 처리 -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.dataformat</groupId>
-			<artifactId>jackson-dataformat-xml</artifactId>
-			<version>2.9.6</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.fasterxml.jackson.dataformat</groupId> -->
+<!-- 			<artifactId>jackson-dataformat-xml</artifactId> -->
+<!-- 			<version>2.9.6</version> -->
+<!-- 		</dependency> -->
 
 		<!-- 파일 업로드 -->
 		<dependency>

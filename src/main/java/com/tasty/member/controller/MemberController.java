@@ -60,7 +60,7 @@ public class MemberController {
 		// 아이디와 비밀번호가 DB정보와 맞으면 로그인 처리한다(session에 loginVO객체를 넣어준다.).
 		session.setAttribute("login", service.login(vo, response));
 		
-		return MODULE + "/login";
+		return "redirect:" + session.getAttribute("url");
 	}
 	
 	
@@ -76,7 +76,7 @@ public class MemberController {
 		// 2. session을 그대로 두고 session안에 login 정보가 지운다.
 		session.removeAttribute("login");
 		
-		return "redirect:/member/loginForm.do";
+		return "redirect:" + session.getAttribute("url");
 	}
 	
 	@GetMapping("/joinForm.do")
@@ -335,6 +335,14 @@ public class MemberController {
 		
 		return MODULE + "/view";
 	}
+
+	@GetMapping("/shopView.do")
+	public String shopView(Model model, String id, @ModelAttribute PageObject pageObject ) throws Exception {
+		
+		model.addAttribute("vo", service.shopView(id));
+		
+		return MODULE + "/shopView";
+	}
 	
 	@GetMapping("/shopReg.do")
 	public String shopRegForm(Model model, String id) throws Exception {
@@ -365,6 +373,37 @@ public class MemberController {
 		
 		model.addAttribute("vo", service.shopReg(vo));
 		
-		return "redirect:/member/memberList.do";
+		return "redirect:/member/shopView.do?id=" + vo.getId();
+	}
+	
+	@GetMapping("/masterShopUpdate.do")
+	public String masterShopUpdateForm(Model model, String id) throws Exception {
+		
+		model.addAttribute("vo", service.shopView(id));
+		
+		return MODULE + "/masterShopUpdate";
+	}
+	
+	@PostMapping("masterShopUpdate.do")
+	public String masterShopUpdate(shopMemberVO vo, Model model) throws Exception {
+		
+		model.addAttribute("vo", service.masterShopUpdate(vo));
+		
+		return "redirect:/member/shopView.do?id=" + vo.getId();
+	}
+	
+	@GetMapping("/shopDelete.do")
+	public String shopDeleteForm(Model model, String id) throws Exception {
+		
+		model.addAttribute("vo", service.shopView(id));
+		
+		return MODULE + "/shopDelete";
+	}
+	
+	@PostMapping("/shopDelete.do")
+	public String shopDelete(shopMemberVO vo, Model model) throws Exception {
+		model.addAttribute("vo", service.shopDelete(vo));
+		return "redirect:/member/shopView.do?id=" + vo.getId();
+		
 	}
 }

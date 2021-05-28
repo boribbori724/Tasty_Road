@@ -96,6 +96,7 @@ var imageExt = ["JPG", "JPEG", "GIF", "PNG"];
 		$("#cancelBtn").click(function(){
 			history.back();
 		});
+	});
 	
 
 </script>

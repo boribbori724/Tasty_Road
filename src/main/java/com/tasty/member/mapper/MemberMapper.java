@@ -66,11 +66,12 @@ public interface MemberMapper {
 	public int gradeModify(MemberVO vo);
 	
 	public MemberVO view(String id);
+
+	public shopMemberVO shopView(String id);
 	
 	public int shopReg(shopMemberVO vo);
 	
+	public int masterShopUpdate(shopMemberVO vo);
 	
-	
-	/* 지도 */
-	public List<shopMemberVO> getMap(shopMemberVO vo);
+	public int shopDelete(shopMemberVO vo);
 }

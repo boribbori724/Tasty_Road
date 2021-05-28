@@ -60,12 +60,15 @@ public interface MemberService {
 	
 	// 회원 정보 보기
 	public MemberVO view(String id) throws Exception;
+
+	// 회원 정보 보기
+	public shopMemberVO shopView(String id) throws Exception;
 	
 	// 관리자의 사업자 등록
 	public int shopReg(shopMemberVO vo) throws Exception;
-
 	
-	/* 지도 */ 
-	public List<shopMemberVO> getMap(shopMemberVO vo) throws Exception;
+	public int masterShopUpdate(shopMemberVO vo) throws Exception;
+
+	public int shopDelete(shopMemberVO vo) throws Exception;
 
 }

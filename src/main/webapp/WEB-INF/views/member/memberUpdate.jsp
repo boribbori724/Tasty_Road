@@ -6,9 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>내 정보 수정</title>
 
 <link href="/resources/css/new_main.css" rel="stylesheet" />
+<script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 

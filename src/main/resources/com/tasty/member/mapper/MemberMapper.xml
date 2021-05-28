@@ -91,10 +91,10 @@
 		where id = #{id}
 	</update>
 	
-	<update id="memberWithdraw">
-		update member set gradeNo='2'
+	<delete id="memberWithdraw">
+		delete from member
 		where id=#{id} and pw=#{pw}
-	</update>
+	</delete>
 	
 	
 	
@@ -126,6 +126,12 @@
 		from member m, grade g
 		where (id = #{id}) and (m.gradeNo = g.gradeNo)
 	</select>
+
+	<select id="shopView" resultType="com.tasty.member.vo.shopMemberVO">
+		select id, shopName, shopNo, address, tel, content, image
+		from shopMember
+		where (id = #{id})
+	</select>
 	
 	<insert id="shopReg">
 		insert into shopMember(id, shopName, shopNo, address, tel, content, image)
@@ -134,9 +140,16 @@
 <!--         values('test4', '가게명', '123-45-67891', '경기도 양주시', '031-123-4567'); -->
 	</insert>
 	
-	<!-- 지도 -->
-	<select id="getMap" resultType="com.tasty.member.vo.shopMemberVO">
-		select shopName, address from shopMember
-	</select>
+	<update id="masterShopUpdate">
+		update shopMember set shopName = #{shopName}, tel =#{tel}, address = #{address}
+		where id=#{id}
+	</update>
+	
+	<delete id="shopDelete">
+		delete from shopMember
+		where id=#{id}
+	</delete>
+	
+	
 
 </mapper>

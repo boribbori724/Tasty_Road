@@ -27,7 +27,5 @@ public class MapController {
 		
 		log.info("찍어보좌 con : " + vo);
 		
-		model.addAttribute("vo", service.getMap(vo));
-		
 	}
 }

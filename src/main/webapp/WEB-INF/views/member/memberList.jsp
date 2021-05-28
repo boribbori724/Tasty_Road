@@ -38,6 +38,7 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 		var query = ${(empty pageObject)?"''":"'&page=" += pageObject.page
 				+= "&perPageNum=" += pageObject.perPageNum += "'"};
 		location = "view.do?id=" + id;
+		
 	});
 	
 });
@@ -83,7 +84,6 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 		<tr>
 			<td colspan="8">
 				<a href="../main/main.jsp" class="btn btn-default">메인 페이지</a>
-				<a href="../member/logout.jsp" class="btn btn-default">로그아웃</a>
 			</td>
 		</tr>
 	</tfoot>
@@ -114,9 +114,6 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
         			<label class="radio-inline">
         				<input type="radio" name="gradeNo" value="1"
         				 class="formGradeNo">강퇴</label>
-        			<label class="radio-inline">
-        				<input type="radio" name="gradeNo" value="2"
-        				 class="formGradeNo">탈퇴</label>
         			<label class="radio-inline">
         				<input type="radio" name="gradeNo" value="3"
         				 class="formGradeNo">휴면</label>
