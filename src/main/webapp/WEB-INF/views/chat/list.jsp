@@ -9,6 +9,8 @@
 <meta charset="UTF-8">
 
 <title>Chatting List</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 <style type="text/css">
 h1{
    text-align: center;

@@ -15,8 +15,8 @@
 <meta name="description" content="">
 <meta name="author" content="">	
 
-<!-- <link rel="stylesheet" -->
-<!-- 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>안트레 들어 왕</title>
 
@@ -52,8 +52,8 @@
 					<i class="fas fa-map-marked"></i>
 				</div>
 				<div class="sidebar-brand-text mx-3">
-					먹길 따라 <br>
-					맛길 따라
+					맛길 따라 <br>
+					먹길 따라
 				</div>
 			</a>
 

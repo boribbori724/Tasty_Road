@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace="pakage + interface" 동일해야 한다 -->
+<mapper namespace="com.tasty.bookmark.mapper.BookmarkMapper">
+
+	<select id="bookmark"
+		resultType="com.tasty.bookmark.vo.bookmarkVO">
+		SELECT shopNo, id, cnt, writeDate
+		FROM bookMark
+		WHERE shopNo = #{shopNo} and id = #{id}
+	</select>
+	<select id="list" 
+	resultType="com.tasty.bookmark.vo.bookmarkVO">
+		SELECT s.shopName, b.shopNo, b.id, b.writeDate
+		FROM bookMark b, shopMember s
+		WHERE b.id = #{id} and (b.shopNo = s.shopNo)
+	</select>
+	<insert id="like">
+		insert into bookmark(id, shopNo)
+		values (#{id}, #{shopNo})
+
+	</insert>
+
+	<delete id="unlike">
+		delete from bookmark
+		where id = #{id} and shopNo = #{shopNo}
+	</delete>
+
+</mapper>
+ 

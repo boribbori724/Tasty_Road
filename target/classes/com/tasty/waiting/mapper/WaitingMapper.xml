@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.tasty.waiting.mapper.WaitingMapper">
+	
+	<select id="wait" resultType="com.tasty.waiting.vo.waitVO">
+		SELECT shopNo, id, now, wait, total
+		FROM shopMember
+		WHERE shopNo = #{shopNo}
+	</select>
+	
+	<!-- 현재 테이블 수 수정 -->
+	<update id="nowUpdate">	
+		UPDATE shopMember set now = #{now}
+		WHERE id = #{id} AND shopNo = #{shopNo}
+	</update>
+	<!-- 현재 테이블 수 수정 End -->
+	
+	<!-- 전체 테이블 수 수정 -->
+	<update id="totalUpdate">
+		UPDATE shopMember set total = #{total}
+		WHERE id = #{id} AND shopNo = #{shopNo}
+	</update>
+	<!-- 전체 테이블 수 수정 End -->
+	
+</mapper>

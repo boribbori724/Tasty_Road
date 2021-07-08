@@ -9,6 +9,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 <title>Chatting Room</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <!-- 기본적으로 사용되는 util js : chat.js 위에 써줘야 함 -->
 <script type="text/javascript" src="/js/util.js"></script>
@@ -23,12 +24,17 @@ h5{
 	top:-200px;
 }
 
+.pull-right{	
+	text-align: right;
+}
+
 .chat{
     overflow-x: hidden;
     display:flex;
     flex-direction: column-reverse;
     overflow-y:auto;
     height:400px;
+/*     width: 600px; */
 }
 
 .chatSendBtn{
@@ -49,11 +55,11 @@ pre{
 } 
 
 .rightChatView{
-	background-color: #c0b6c8;
+	background-color: #a799b2;
 }
 
 .leftChatView{
-	background-color: #d9d3de;
+	background-color: #cdc5d3;
 }
 
 .goList {
@@ -104,6 +110,11 @@ pre{
 .deleteRoom:hover {
 	background-color: #f0c1c3;
 	color: white;
+	
+}
+
+.buttons{
+	margin-left: 230px;
 }
 </style>
 
@@ -150,19 +161,19 @@ $(function() {
                      console.log(list[i]);
                      if (list[i].id == loginId) {
                         str += "<div>";
-                        str += "<div class='row'>";
-                        str += "<div class='col-sm-4 pull-right' id='chatMessageArea' data-chatNo='" + list[i].chatNo + "'>";
-                        str += "<label id='user'><i class='fas fa-user-circle'> " + list[i].id + " : <br></label></i>";
-                           str += "<pre class='rightChatView'>" + list[i].content + "<br>" + chatService.displyTime(list[i].writeDate) + "</pre>";
+                        	str += "<div class='row'>";
+                       			str += "<div class=' col-sm-12 pull-right' id='chatMessageArea' data-chatNo='" + list[i].chatNo + "'>";
+                        			str += "<label id='user'><i class='fas fa-user-circle'> " + list[i].id + " : <br> </label></i>";
+                           			str += "<pre class='rightChatView'>" + list[i].content + "<br>" + chatService.displyTime(list[i].writeDate) + "</pre>";
+                           		str += "</div>";
                            str += "</div>";
-                           str += "</div>";
-                           str += "</div>";
+                      	str += "</div>";
 
                      } else {
                         str += "<div>";
                         str += "<div class='row'>";
-                        str += "<div class='col-sm-4 pull-left' id='chatMessageArea' data-chatNo='" + list[i].chatNo + "'>";
-                        str += "<label id='user'><i class='far fa-user-circle'> " + list[i].id + " : <br></label></i> ";
+                        str += "<div class='col-sm-12' id='chatMessageArea' data-chatNo='" + list[i].chatNo + "'>";
+                        str += "<label id='user'><i class='far fa-user-circle'> " + list[i].id + " : <br> </label></i> ";
                            str += "<pre class='leftChatView'>" + list[i].content + "<br>" + chatService.displyTime(list[i].writeDate) + "</pre>";
                            str += "</div>";
                            str += "</div>";
@@ -222,7 +233,7 @@ $(function() {
       <!-- 채팅 메뉴 -->
       <div class="col-12 row justify-content-center align-items-center my-5"></div>
       <div class="col-12 form-group" style="margin-top: 40px; clear: both;">
-         <div class="col-10 form-control" style="margin: 20px auto; text-align: center; color: #34558b; background-color: #ecf1f8; border: 1px solid #dae4f1; padding: 10px 10px; border-radius: 8px;">
+         <div class="col-10 form-control" style="margin: 20px auto; text-align: center; color: #34558b; background-color: #ecf1f8; border: 1px solid #dae4f1; padding: 10px 10px; border-radius: 8px; width: 620px;">
             ${vo.chatName }
             <input name="chatNo" id="chatNo" type="hidden" value="${vo.chatNo }" />
             <c:if test="${vo.id1 == login.id}">
@@ -237,32 +248,32 @@ $(function() {
 
       <!-- 채팅 보여주는 곳 : function 부분 -->
       <div class="col-12 form-group" id="updateContent">
-         <div class="col-12 form-control chat" style="margin: 0 auto; border: 1px solid #dae4f1; height: 400px; border-radius: 10px; overflow: auto; overflow-x: hidden;" id="chatArea">
+         <div class="col-12 form-control chat" style="margin: 0 auto; border: 1px solid #dae4f1; height: 400px; width:620px; border-radius: 10px; overflow: auto; overflow-x: hidden;" id="chatArea">
             <div id="chatMessageArea" style="margin-top: 10px; margin-left: 10px;">
             
                <div class="row">
-                  <div class='col-sm-3 pull-right' id='myF' data-chatNo=10>
+                  <div class="col-sm-3 pull-right" id='myF' data-chatNo=10>
                      <label>test : <br></label>
                      <pre>test<br> 2021.05.13</pre>
                   </div>
                </div>
                
                <div class="row" >
-                  <div class='col-sm-3 pull-right' id='myF' data-chatNo=10>
+                  <div class="col-sm-3 pull-right" id='myF' data-chatNo=10>
                      <label>test : <br></label>
                      <pre>test<br> 2021.05.13</pre>
                   </div>
                </div>
                
                <div class="row">
-                  <div class='col-sm-3 pull-right' id='myF' data-chatNo=10>
+                  <div class="col-sm-3 pull-right" id='myF' data-chatNo=10>
                      <label>test : <br></label>
                      <pre>test<br> 2021.05.13</pre>
                   </div>
                </div>
                
                <div class="row">
-                  <div class='col-sm-3 pull-right' id='myF' data-chatNo=10>
+                  <div class="col-sm-3 pull-right" id='myF' data-chatNo=10>
                      <label>test : <br></label>
                      <pre>test<br> 2021.05.13</pre>
                   </div>
@@ -282,16 +293,16 @@ $(function() {
             <input name="id2" id="chatAccepter" type="hidden" value="${vo.id2 }" />
             <div class="chatContent row">
                <label for="chatContent"></label>
-               <textarea cols="5" wrap="hard" style="border: 1px solid #dae4f1; height: 85px; float: left; width: 80%" placeholder="메시지를 입력해주세요." id="chatContent" 
+               <textarea cols="5" wrap="hard" style="border: 1px solid #dae4f1; height: 85px; float: left; width: 400px; margin-left:250px;" placeholder="메시지를 입력해주세요." id="chatContent" 
                name="content"></textarea>
             </div>
-            <span style="margin-top: -85px; float: right; width: 20%; height: 85px; text-align: center; background-color: #ecf1f8; border-radius: 5px;">
+            <span style="margin-top: -85px; float: right; width: 20%; height: 85px; text-align: center; background-color: #ecf1f8; border-radius: 5px; margin-right:240px;">
                <br>
                <button type="button" class="btn chatSendBtn" id="chatSendBtn">전송</button>
             </span>
          </form>
       </div>
-      <div class="col-2" style="float: left">
+      <div class="col-2 buttons">
          <button type="button" class="btn btn-default goList" id="goList" onclick="location='list.do'">리스트</button>
          <a href="delete.do?no=${vo.chatNo }" class="btn btn-default deleteRoom" id="deleteRoom">나가기</a>
       </div>
