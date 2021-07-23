@@ -8,7 +8,7 @@ import com.webjjang.util.PageObject;
 public interface ChatMapper {
 	
 	//1. list
-	public List<ChatVO> list(PageObject pagrObject);
+	public List<ChatVO> list(PageObject pageObject);
 	
 	//1-1. getTotalRow
 	public Long getTotalRow(PageObject pageObject);
